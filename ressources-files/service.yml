@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ex05_deployment
+  name: ex05-deployment
 spec:
   selector:
-    app: ex_05
+    app: ex-05
   ports:
   - port: 80
     targetPort: 3000

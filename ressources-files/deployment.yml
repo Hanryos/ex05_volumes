@@ -1,37 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ex05_deployment
+  name: ex05-deployment
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: ex_05
+      app: ex-05
   template:
     metadata:
       labels:
-        app: ex_05
+        app: ex-05
     spec:
       volumes:
-        - name: volume-type-emptydir
-          emptyDir:
-            sizeLimit: "500M"
-
         - name: volume-type-hostpath
           hostPath:
             path: /data-app-ex05
             type: DirectoryOrCreate
 
       containers:
-      - name: ex_05
+      - name: ex-05
         volumeMounts:          
-          - mountPath: /data-partagees
+          - mountPath: /app/story
             name: volume-type-hostpath
 
         image: hanryos/ex05
         env:
-          - name: STORY_FILE
-            value: "/app/story/"
+          - name: STORY_FOLDER
+            value: "/story"
         resources:
           limits:
             memory: "128Mi"

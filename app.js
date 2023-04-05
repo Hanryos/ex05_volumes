@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.get('/story', (req, res) => {
   fs.readFile(filePath, (err, data) => {
     if (err) {
-      return res.status(500).json({ message: 'Failed to open file.' });
+      return res.status(500).json({ message: filePath });
     }
     res.status(200).json({ story: data.toString() });
   });
